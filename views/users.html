@@ -1,0 +1,45 @@
+% include("header", title="Users")
+
+<main>
+        
+        
+
+    % if users == []: 
+        <div>
+            No users
+        </div>
+    % end
+
+    <div id="users">
+        % for user in users:
+        <div class="user">
+            <!-- if i want to delete -->
+            <form action="/show-user">
+                <div>ID: {{user["id"]}}</div>
+                <div>Username: {{user["username"]}}</div>
+                <div>Name: {{user["name"]}}</div>
+                <div>Last Name: {{user["last_name"]}}</div>
+                <div>Email: {{user["email"]}}</div>
+                <div>Password: {{user["password"]}}</div>
+            </form>
+            
+        </div>
+        % end
+    </div>
+    
+    <div id="sessions">
+        % for session in sessions:
+        <div class="user">
+            <!-- if i want to delete -->
+            <form action="/show-user">
+                <div>ID: {{session["session_id"]}}</div>
+                <div>Username: {{session["username"]}}</div>
+                <div>Time Created: {{session["iat"]}}</div>
+            </form>
+            
+        </div>
+        % end
+    </div>
+</main>
+
+% include("footer")

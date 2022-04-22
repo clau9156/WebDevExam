@@ -1,0 +1,19 @@
+% include("header", title="Home")
+
+    <main>
+        <h1>Twitter</h1>
+        <div id="tweets">
+            
+            % for tweet in tweets:
+            <div class="tweet">
+            
+                <div>{{tweet["text"]}}</div>
+                % if 'image' in tweet:
+                <img src="/images/image2.png" alt="tweet_image">
+                % end
+            </div>
+            % end
+        </div>
+    </main>
+
+% include("footer")

@@ -1,0 +1,57 @@
+% include("header", title="Sign Up")
+
+    <main>
+        <div class="signup">
+            <h1>Sign Up</h1>
+            <form action="/signup" method="POST">
+                <div>
+                    % if error == "user_name":
+                        <h1>
+                            Please enter name
+                        </h1>
+                    % end 
+                    <label>Name</label>
+                    <input name="user_name" type="text" placeholder="name">
+                </div>
+                <div>
+                    % if error == "user_last_name":
+                        <h1>
+                            Please enter last name
+                        </h1>
+                    % end 
+                    <label>Last name</label>
+                    <input name="user_last_name" type="text" placeholder="last name">
+                </div>
+                <div>
+                    % if error == "user_username":
+                        <h1>
+                            Please enter username
+                        </h1>
+                    % end 
+                    <label>Username</label>
+                    <input name="user_username" type="text" placeholder="username">
+                </div>
+                <div>
+                    % if error == "user_email":
+                        <h1>
+                            Please enter valid email
+                        </h1>
+                    % end 
+                    <label>Email</label>
+                    <input name="user_email" type="text" placeholder="email">
+                </div>
+                <div>
+                    % if error == "user_password":
+                        <h1>
+                            Please enter valid password
+                        </h1>
+                    % end 
+                    <label>Password (min 6 max 50 characters)</label>
+                    <input name="user_password" type="password" placeholder="password">
+                </div>
+                <button>Signup</button>
+            </form>
+        </div>
+    </main>
+
+% include("footer")

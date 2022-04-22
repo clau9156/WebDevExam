@@ -1,0 +1,40 @@
+% include("header", title="Tweet")
+
+    <main>
+        <a href="/logout" class="logout">Logout</a>
+        <h1>My Tweets</h1>
+
+        <div class="tweet_form">
+            <form action="/tweet_create" method="POST" onsubmit="validate(sendTweet); return false">
+                <input name="tweet_text" type="text" placeholder="What's happening?"><br>
+                <label>Upload Image</label>
+                <input name="tweet_image" type="file" accept="image" placeholder="upload image"><br>
+                <button type="submit">Tweet</button>
+            </form>
+        </div>
+
+        % if tweets == []:
+            <div>No tweets</div>
+        % end 
+
+        <div id="tweets">
+            % for tweet in tweets:
+            <div class="tweet">
+                <!-- <form action="/tweet-post"> -->
+                    <div>{{tweet["tweet_time"]}}</div>
+                    <div>{{tweet["text"]}}</div>
+                    <!-- <div>Title: {{tweet["title"]}}</div> -->
+                    <!-- <div>Description: {{tweet["description"]}}</div> -->
+                    <form action="/tweet-delete/{{tweet['tweet_id']}}" method="POST">
+                        <button>DELETE</button>
+                    </form>
+                    <form action="/tweet-update/{{tweet['title']}}/{{tweet['description']}}/{{tweet['tweet_time']}}/{{tweet['tweet_id']}}" method="GET">
+                        <button>EDIT</button>
+                    </form>
+                <!-- </form> -->
+            </div>
+            % end
+        </div>
+    </main>
+
+% include("footer")

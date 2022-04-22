@@ -1,0 +1,30 @@
+% include("header", title="Login")
+
+    <main>
+        <div class="login">
+            <h1>Login</h1>
+            <form action="/login" method="POST">
+                <div>
+                    % if error == "user_username":
+                        <h1>
+                            Please enter a valid username
+                        </h1>
+                    % end
+                    <label>Username</label><br>
+                    <input name="user_username" type="text" placeholder="username" value="{{user_username or ''}}">
+                </div>
+                <div>
+                    % if error == "user_password":
+                        <h1>
+                            Please enter a valid password
+                        </h1>
+                    % end
+                    <label>Password (min 6 max 50 characters)</label><br>
+                    <input name="user_password" type="password" placeholder="password">
+                </div>
+                <button>Login</button>
+            </form>
+        </div>
+    </main>
+
+% include("footer")
