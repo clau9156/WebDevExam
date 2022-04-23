@@ -2,15 +2,19 @@
 
     <main>
         <h1>Twitter</h1>
+        % if tweets == []:
+            <div>No tweets</div>
+        % end 
+
         <div id="tweets">
-            
             % for tweet in tweets:
-            <div class="tweet">
-            
-                <div>{{tweet["text"]}}</div>
-                % if 'image' in tweet:
-                <img src="/images/image2.png" alt="tweet_image">
-                % end
+            <div id="{{tweet['id']}}" class="tweet">
+                    <div>{{tweet["tweet_time"]}}</div>
+                    <div>{{tweet["text"]}}</div>
+                    
+                    % if 'image' in tweet:
+                    <img src="/images/image2.png" alt="tweet_image">
+                    % end
             </div>
             % end
         </div>

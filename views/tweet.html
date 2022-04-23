@@ -1,11 +1,22 @@
 % include("header", title="Tweet")
 
     <main>
+        <section id="update_modal">
+            <div class="updateText">
+                <div id="close_modal">Close</div>
+                <form onsubmit="validate(updateTweet); return false">
+                    <input type="text" name="tweet_id" class="hidden">
+                    <input type="text" name="tweet_text_update" id="tweet_text_update">
+                    <button>Update</button>
+                </form> 
+            </div>
+        </section>
+
         <a href="/logout" class="logout">Logout</a>
         <h1>My Tweets</h1>
 
         <div class="tweet_form">
-            <form action="/tweet_create" method="POST" onsubmit="validate(sendTweet); return false">
+            <form onsubmit="validate(sendTweet); return false">
                 <input name="tweet_text" type="text" placeholder="What's happening?"><br>
                 <label>Upload Image</label>
                 <input name="tweet_image" type="file" accept="image" placeholder="upload image"><br>
@@ -19,19 +30,16 @@
 
         <div id="tweets">
             % for tweet in tweets:
-            <div class="tweet">
-                <!-- <form action="/tweet-post"> -->
+            <div id="{{tweet['id']}}" class="tweet">
                     <div>{{tweet["tweet_time"]}}</div>
                     <div>{{tweet["text"]}}</div>
-                    <!-- <div>Title: {{tweet["title"]}}</div> -->
-                    <!-- <div>Description: {{tweet["description"]}}</div> -->
-                    <form action="/tweet-delete/{{tweet['tweet_id']}}" method="POST">
-                        <button>DELETE</button>
-                    </form>
-                    <form action="/tweet-update/{{tweet['title']}}/{{tweet['description']}}/{{tweet['tweet_time']}}/{{tweet['tweet_id']}}" method="GET">
-                        <button>EDIT</button>
-                    </form>
-                <!-- </form> -->
+                    
+                    % if 'image' in tweet:
+                    <img src="/images/image2.png" alt="tweet_image">
+                    % end
+                    <div>
+                        <button onclick="tweet_delete(`{{tweet['id']}}`)">DELETE</button>
+                    </div>
             </div>
             % end
         </div>

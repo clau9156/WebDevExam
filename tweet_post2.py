@@ -30,4 +30,4 @@ def _():
 
     tweet = {"id":tweet_id, "text":tweet_text, "image":tweet_image, "tweet_time":tweet_time}
     g.TWEETS.append(tweet)
-    return tweet_id
+    return tweet_id, "anything"

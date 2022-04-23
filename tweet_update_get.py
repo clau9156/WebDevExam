@@ -6,7 +6,7 @@ import jwt
 @get("/tweet-update/<title_update>/<description_update>/<tweet_time>/<tweet_id>")
 @view("tweet-update")
 
-def _(title_update, description_update, tweet_time, tweet_id):
+def _(text_update, image_update, tweet_time, tweet_id):
 
     # VALIDATE
     if len(g.SESSIONS) < 1:
