@@ -110,3 +110,14 @@ async function updateTweet() {
         }
     })
 }
+
+// SEARCH SEARCH SEARCH SEARCH SEARCH SEARCH SEARCH SEARCH SEARCH SEARCH SEARCH SEARCH SEARCH SEARCH
+searchBar.addEventListener("keyup", (e) => {
+    console.log("search");
+    let searchString = e.target.value;
+    searchString = searchString.toLowerCase();
+    const filterTweets = tweets.filter((tweet) => {
+        return (tweet.text.toLowerCase().includes(searchString));
+    });
+    displayListFiltered(filterTweets);
+});
