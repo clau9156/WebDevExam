@@ -1,8 +1,8 @@
 from bottle import error, get, request, view, response
 
 ##############################
-@get("/login")
-@view("login")
+@get("/admin-login")
+@view("admin-login")
 def _():
     try: 
         error = request.params.get("error")

@@ -20,4 +20,4 @@ def _(tweet_id):
     except Exception as ex:
         print(ex)
         response.status = 500
-        return {"server error"}
+        return {"error"}

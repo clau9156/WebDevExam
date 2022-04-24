@@ -1,17 +1,17 @@
 % include("header", title="Tweet")
 
+<section class="update_modal hide">
+    <div class="modalBackground"></div>
+    <div class="updateText">
+        <div id="close_modal">Close</div>
+        <form onsubmit="validate(updateTweet); return false">
+            <input type="text" name="tweet_id" class="hidden">
+            <input type="text" name="tweet_text_update" id="tweet_text_update"><br>
+            <button>Update</button>
+        </form> 
+    </div>
+</section>
     <main>
-        <section id="update_modal">
-            <div class="updateText">
-                <div id="close_modal">Close</div>
-                <form onsubmit="validate(updateTweet); return false">
-                    <input type="text" name="tweet_id" class="hidden">
-                    <input type="text" name="tweet_text_update" id="tweet_text_update">
-                    <button>Update</button>
-                </form> 
-            </div>
-        </section>
-
         <a href="/logout" class="logout">Logout</a>
         <h1>My Tweets</h1>
 
@@ -24,9 +24,6 @@
             </form>
         </div>
 
-        % if tweets == []:
-            <div>No tweets</div>
-        % end 
 
         <div id="tweets">
             % for tweet in tweets:
@@ -39,6 +36,7 @@
                     % end
                     <div>
                         <button onclick="tweet_delete(`{{tweet['id']}}`)">DELETE</button>
+                        <button>UPDATE</button>
                     </div>
             </div>
             % end

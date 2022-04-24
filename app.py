@@ -11,14 +11,18 @@ import login_get            #GET
 import users_get            #GET
 import logout_get           #GET
 import tweet_get            #GET
+import admin_login_get      #GET
+import admin_get            #GET
 # import tweet_create_get     #GET
 # import tweet_update_get     #GET
 
-import tweet_update_post    #POST
-import tweet_delete         #DELETE
+# import tweet_update_post    #POST
 import login_post           #POST
 import signup_post          #POST
 import tweet_post           #POST
+import admin_login_post     #POST
+
+import tweet_delete         #DELETE
 
 import tweet_put            #PUT
 

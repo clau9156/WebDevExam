@@ -26,7 +26,7 @@ async function sendTweet() {
         
         <div>${_one("input[type=text]", form).value}</div>
         <div>${_one("input[type=file]", form).value}</div>
-        <img src="/images/23df3ae2-0c6c-4cd0-845a-31c458c571ce.png">
+        <img src="/images/image1.png">
         <div>
             <button onclick="tweet_delete('${tweet_id}')">DELETE</button>
             <button onclick="tweet_update()">UPDATE</button>

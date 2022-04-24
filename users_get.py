@@ -1,4 +1,4 @@
-from bottle import get, redirect, request, view
+from bottle import get, redirect, request, view, response
 import g
 import jwt
 
@@ -18,8 +18,12 @@ def _():
     for session in g.SESSIONS:
         if not session['session_id'] == user_info["session_id"]:
             return redirect("/login?error=invalid")
-
-    return dict(users=g.USERS, sessions=g.SESSIONS) 
+    try:
+        return dict(users=g.USERS, sessions=g.SESSIONS, tweets=g.TWEETS) 
+    except Exception as ex:
+        print(ex)
+        response.status = 500
+        return {"error"}
 
 
 
