@@ -5,7 +5,9 @@
     <div class="updateText">
         <div id="close_modal">Close</div>
         <form onsubmit="validate(updateTweet); return false">
-            <input type="text" name="tweet_id" class="hidden">
+            <div id="div_tweet_id" class="hidden">
+                <input type="text" name="tweet_id">
+            </div>
             <input type="text" name="tweet_text_update" id="tweet_text_update"><br>
             <button>Update</button>
         </form> 
@@ -27,18 +29,32 @@
 
         <div id="tweets">
             % for tweet in tweets:
+            % if not tweet['image']:
             <div id="{{tweet['id']}}" class="tweet">
-                    <div>{{tweet["tweet_time"]}}</div>
-                    <div>{{tweet["text"]}}</div>
-                    
-                    % if 'image' in tweet:
-                    <img src="/images/image2.png" alt="tweet_image">
-                    % end
+                <div>{{tweet["username"]}}</div>
+                <div>{{tweet["tweet_time"]}}</div>
+                <div>{{tweet["text"]}}</div>
+                
                     <div>
                         <button onclick="tweet_delete(`{{tweet['id']}}`)">DELETE</button>
-                        <button>UPDATE</button>
+                        <button onclick="tweet_update(`{{tweet['id']}}`, `{{tweet['text']}}`)">UPDATE</button>
                     </div>
             </div>
+            % else:
+            <div id="{{tweet['id']}}" class="tweet">
+                <div>{{tweet["username"]}}</div>
+                <div>{{tweet["tweet_time"]}}</div>
+                <div>{{tweet["text"]}}</div>
+                
+                % if 'image' in tweet:
+                <img src="/images/{{tweet['image']}}" alt="tweet_image"/>
+                % end
+                    <div>
+                        <button onclick="tweet_delete(`{{tweet['id']}}`)">DELETE</button>
+                        <button onclick="tweet_update(`{{tweet['id']}}`, `{{tweet['text']}}`, `/images/{{tweet['image']}}`)">UPDATE</button>
+                    </div>
+            </div>
+            % end
             % end
         </div>
     </main>

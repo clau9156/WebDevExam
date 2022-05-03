@@ -25,6 +25,7 @@ import admin_login_post     #POST
 import tweet_delete         #DELETE
 
 import tweet_put            #PUT
+import like_put             #PUT
 
 
 ##############################
@@ -46,6 +47,11 @@ def _():
 @get("/images/<image_name>")
 def _(image_name):
     return static_file(image_name , root="./images") 
+
+##############################
+@get("/svg/<svg_name>")
+def _(svg_name):
+    return static_file(svg_name, root="./svg")
 
 ##############################
 @get("/")

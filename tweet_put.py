@@ -5,19 +5,23 @@ import jwt
 
 @put("/tweet-update")
 def _():
-    tweet_id = request.forms.get("tweet_id")
-    text_updated = request.forms.get("tweet_text_update").strip()
+
+    tweet_id = request.forms.get('tweet_id')
+    updated_text = request.forms.get('tweet_text_update').strip()
+    print("#"*40)
+    print(updated_text, tweet_id)
 
     try:
         encoded_jwt = request.get_cookie("jwt")
         user_info = jwt.decode(encoded_jwt, "smart key", algorithms="HS256")
 
         for tweet in g.TWEETS:
-            if tweet["tweet_id"] == tweet_id:
-                tweet["text"] == text_updated
+            if tweet["id"] == tweet_id:
+                tweet["text"] = updated_text
+                print(tweet)
         
         response.status = 200
-        return dict(user_id = user_info["user_id"], tweets=g.TWEETS)
+        return dict(username = user_info["username"], tweets=g.TWEETS)
     except Exception as ex:
         print(ex)
         response.status = 500

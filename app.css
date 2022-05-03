@@ -206,3 +206,11 @@ h1 {
   background: rgba(0, 0, 0, 0.45);
   margin-top: -4vw;
 }
+
+
+/* Like */
+.show {
+  display: none;
+  width: 2vw;
+  height: auto;
+}

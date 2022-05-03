@@ -10,14 +10,46 @@
             <div>@{{user["username"]}}</div>
             <div id="tweets">
                 % for tweet in tweets:
+                % if tweet["username"] == user["username"]:
+                % if not tweet['image']:
                 <div id="{{tweet['id']}}" class="tweet">
-                        <div>{{tweet["tweet_time"]}}</div>
-                        <div>{{tweet["text"]}}</div>
-                        
-                        % if 'image' in tweet:
-                        <img src="/images/image2.png" alt="tweet_image">
-                        % end
+                    <div>{{tweet["username"]}}</div>
+                    <div>{{tweet["tweet_time"]}}</div>
+                    <div>{{tweet["text"]}}</div>
+                    <div class="show">
+                        <img src="/svg/heart-solid.svg" alt="like"/>
+                    </div>
+                    <div>
+                        <!-- % if tweet['like'] == "true":  -->
+                        <!-- <button onclick="tweet_like(`{{tweet['id']}}`)">Like</button> -->
+                        <!-- % else: -->
+                        <!-- <button onclick="tweet_like(`{{tweet['id']}}`)">Unlike</button> -->
+                        <!-- % end -->
+                    </div>
                 </div>
+                % else:
+                <div id="{{tweet['id']}}" class="tweet">
+                    <div>{{tweet["username"]}}</div>
+                    <div>{{tweet["tweet_time"]}}</div>
+                    <div>{{tweet["text"]}}</div>
+                    
+                    % if 'image' in tweet:
+                    <img src="/images/{{tweet['image']}}" alt="tweet_image"/>
+                    % end
+
+                    <div class="show">
+                        <img src="/svg/heart-solid.svg" alt="like"/>
+                    </div>
+                    <div>
+                        <!-- % if tweet['like'] == "true":  -->
+                        <!-- <button onclick="tweet_like(`{{tweet['id']}}`)">Like</button> -->
+                        <!-- % else: -->
+                        <!-- <button onclick="tweet_like(`{{tweet['id']}}`)">Unlike</button> -->
+                        <!-- % end -->
+                    </div>
+                </div>
+                % end
+                % end
                 % end
             </div>
         </div>
